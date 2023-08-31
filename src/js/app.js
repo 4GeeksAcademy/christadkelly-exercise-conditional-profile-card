@@ -24,23 +24,66 @@ import "../style/index.css";
  */
 function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
-  // here we ask the logical questions to make decisions on how to build the html
-  // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
+
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
-  // reset the website body with the new html output
+  let firstName = "";
+  variables.name == null
+    ? (firstName = "Violet")
+    : (firstName = variables.name);
+
+  let lastName = "";
+  variables.lastname == null
+    ? (lastName = "Boilett")
+    : (lastName = variables.lastname);
+
+  let personRole = "";
+  variables.role == null
+    ? (personRole = "Student")
+    : (personRole = variables.role);
+
+  let personCity = "";
+  variables.city == null
+    ? (personCity = "City")
+    : (personCity = variables.city);
+
+  let personCountry = "";
+  variables.country == null
+    ? (personCountry = "Country")
+    : (personCountry = variables.country);
+
+  let githubName = "";
+  variables.github == null
+    ? (githubName = "4geeksacademy")
+    : (githubName = variables.github);
+
+  let twitterName = "";
+  variables.twitter == null
+    ? (twitterName = "4geeksacademy")
+    : (twitterName = variables.twitter);
+
+  let instagramName = "";
+  variables.instagram == null
+    ? (instagramName = "4geeksacademy")
+    : (instagramName = variables.instagram);
+
+  let linkedinName = "";
+  variables.linkedin == null
+    ? (linkedinName = "4geeksacademy")
+    : (linkedinName = variables.linkedin);
+
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${firstName} ${lastName}</h1>
+          <h2>${personRole}</h2>
+          <h3>${personCity}, ${personCountry}</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href="https://twitter.com/${twitterName}"><i class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${githubName}"><i class="fa-brands fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/${linkedinName}"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagramName}"><i class="fa-brands fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -61,7 +104,7 @@ window.onload = function() {
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
